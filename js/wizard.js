@@ -1,14 +1,14 @@
 (function ($) {
 
-  var wizardName = prompt('What\s your Wizrds name?'),
+  var wizardName = prompt('What\s your Wizrds name?', 'Harry'),
     target = 1000;
 
   // Greetings
-  console.log('Greetings ' + wizardName);
+  console.log('You\'re a Wizard ' + wizardName);
   console.log('Start by casting a spell...\nType the following command into the console and hit enter:\n$.wizard.cast();')
 
   $('#wizard-name').text(wizardName);
-  $('#target').text('Enemy health ' + target);
+  $('#target').html('<h2>Enemy health ' + target + ' 👾</h2>');
 
   function rollDice(min = 0, max = 100) {
     min = Math.ceil(min);
@@ -36,16 +36,21 @@
         target = target - rollDice();
       } else {
         console.log('Enemy defeated!');
+        alert('You Win!!! 🏆 \nThat monster 👾 never stood a chance \n👏👏👏👏👏👏👏👏👏👏👏👏');
       }
 
 
       console.log('Enemy health remaining ' + target);
 
-      $('#target').text('Enemy health ' + target);
+      $('#target').html('<h2>Enemy health ' + target + ' 👾</h2>');
 
       return rollDice();
     }
   }
+
+  $('#cast-spell').on('click', function(){
+    $.wizard.cast();
+  });
 
 
 })(jQuery);
